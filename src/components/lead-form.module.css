@@ -1,0 +1,363 @@
+.card,
+.callback {
+  --ink: #0c1219;
+  --muted-ink: #51565e;
+  --field-border: #dce0d8;
+  --field-bg: #fcfcf9;
+  --accent: #d8f449;
+  color: var(--ink);
+}
+
+.card {
+  background: #fdfdf9;
+  border: 1px solid #e0e4da;
+  border-radius: 24px;
+  padding: clamp(22px, 3vw, 38px);
+  box-shadow: 0 18px 46px #0c121915;
+}
+
+.header {
+  margin-bottom: 23px;
+}
+
+.timing {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  border: 1px solid #dbe2c4;
+  border-radius: 6px;
+  background: #edf1df;
+  color: #334019;
+  padding: 5px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+}
+
+.header h2,
+.success h2 {
+  margin: 11px 0 6px;
+  color: var(--ink);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 750;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.header p,
+.success p {
+  margin: 0;
+  color: var(--muted-ink);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.formFields {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-inline-size: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px 14px;
+}
+
+.field {
+  min-width: 0;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 6px;
+  color: #303841;
+  font-size: 12px;
+  font-weight: 720;
+  line-height: 1.2;
+}
+
+.field input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 46px;
+  padding: 0 11px;
+  border: 1px solid var(--field-border);
+  border-radius: 8px;
+  background: var(--field-bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.2;
+  transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+}
+
+.field input::placeholder {
+  opacity: 1;
+  color: #666c72;
+  font-size: 13px;
+}
+
+.field input:hover:enabled {
+  border-color: #a8afa5;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: #6e8140;
+  box-shadow: 0 0 0 2px #afc25855;
+  background-color: #fff;
+}
+
+.field input[aria-invalid="true"] {
+  border-color: #ab362d;
+}
+
+.field input:disabled {
+  opacity: 1;
+  background-color: #e9ece5;
+}
+
+.controlWrap {
+  position: relative;
+}
+
+.field .searchInput {
+  padding-right: 35px;
+  text-overflow: ellipsis;
+}
+
+.searchAction {
+  position: absolute;
+  inset: 1px 1px 1px auto;
+  display: grid;
+  width: 34px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 0 7px 7px 0;
+  background: transparent;
+  color: #626b73;
+  cursor: pointer;
+}
+
+.searchAction:hover:enabled {
+  background-color: #e9ece5;
+  color: var(--ink);
+}
+
+.searchAction:disabled {
+  color: #7a8083;
+  cursor: default;
+}
+
+.dropdown {
+  position: absolute;
+  z-index: 5;
+  inset: calc(100% + 5px) 0 auto;
+  overflow: hidden;
+  padding: 4px;
+  border: 1px solid var(--field-border);
+  border-radius: 9px;
+  background-color: #fff;
+  box-shadow: 0 8px 20px #0c12192a;
+}
+
+.optionList {
+  position: relative;
+  max-height: 190px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.option,
+.noOptions {
+  padding: 8px 9px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.option {
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.option[aria-selected="true"] {
+  font-weight: 700;
+  background-color: #eef2df;
+}
+
+.option:hover,
+.option[data-active="true"] {
+  background-color: #e7efc8;
+}
+
+.noOptions {
+  color: var(--muted-ink);
+}
+
+.currency {
+  position: absolute;
+  top: 50%;
+  left: 11px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #59616a;
+  font-size: 15px;
+}
+
+.field .priceInput {
+  padding-left: 27px;
+  padding-right: 35px;
+  appearance: textfield;
+}
+
+.priceInput::-webkit-inner-spin-button,
+.priceInput::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.priceControls {
+  position: absolute;
+  inset: 1px 1px 1px auto;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  width: 34px;
+  border-left: 1px solid var(--field-border);
+}
+
+.priceControls button {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 0 7px 0 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.priceControls button + button {
+  border-top: 1px solid var(--field-border);
+  border-radius: 0 0 7px 0;
+}
+
+.priceControls button:hover:enabled {
+  background-color: #e9ece5;
+}
+
+.priceControls button:disabled {
+  color: #979e99;
+  cursor: default;
+}
+
+.fieldError,
+.serverError {
+  margin: 6px 0 0;
+  color: #9a291f;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.serverError {
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 48px;
+  margin-top: 17px;
+  padding: 10px 16px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 760;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.submit:hover:enabled {
+  background: #c6e138;
+}
+
+.submit:focus-visible,
+.priceControls button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.submit:disabled {
+  opacity: 0.75;
+  cursor: wait;
+}
+
+.success {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 6px;
+  min-height: 241px;
+  outline: none;
+}
+
+.callback .success {
+  min-height: 150px;
+}
+
+.checkmark {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  color: var(--ink);
+}
+
+@media (max-width: 420px) {
+  .card {
+    border-radius: 17px;
+    padding: 19px 16px;
+  }
+
+  .grid {
+    gap: 13px 9px;
+  }
+
+  .callback .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .field input {
+    padding-left: 8px;
+  }
+
+  .field input::placeholder {
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .field input,
+  .submit {
+    transition: none;
+  }
+}
